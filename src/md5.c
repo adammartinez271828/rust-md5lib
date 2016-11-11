@@ -124,6 +124,8 @@ unsigned *md5( const char *msg, int mlen)
     return h;
 }
 
+int32_t test_function();
+
 int main( int argc, char *argv[] )
 {
     int j,k;
@@ -137,6 +139,8 @@ int main( int argc, char *argv[] )
         for (k=0;k<4;k++) printf("%02x",u.b[k]);
     }
     printf("\n");
+
+    test_function();
 
     return 0;
 }
