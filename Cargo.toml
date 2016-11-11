@@ -1,0 +1,8 @@
+[package]
+name = "md5lib"
+version = "0.1.0"
+authors = ["Adam Martinez <adam.paul.martinez@gmail.com>"]
+
+[lib]
+name = "md5lib"
+crate-type = ["dylib"]
