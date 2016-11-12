@@ -124,7 +124,7 @@ unsigned *md5( const char *msg, int mlen)
     return h;
 }
 
-int32_t test_function();
+// int32_t test_function();
 
 int main( int argc, char *argv[] )
 {
@@ -140,7 +140,7 @@ int main( int argc, char *argv[] )
     }
     printf("\n");
 
-    test_function();
+    // test_function();
 
     return 0;
 }
