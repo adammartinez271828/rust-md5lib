@@ -3,3 +3,6 @@ Cargo.lock
 
 # Ignore C build bin directory
 bin
+
+# Ignore .bk files from cargo fmt
+*.bk
