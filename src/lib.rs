@@ -9,6 +9,18 @@ pub extern "C" fn test_function() -> i32 {
     0
 }
 
+/// Rotate uint v left by amt bits
+/// amt is signed integer so we can rotate right
+#[no_mangle]
+pub extern "C" fn rol(v: u32, amt: i16) -> u32 {
+    if amt >= 0 {
+        return v.rotate_left(amt as u32);
+    }
+    else {
+        return v.rotate_right(-amt as u32);
+    }
+}
+
 // pub extern "C" fn count_substrings(value: *const c_char, substr: *const c_char) -> i32 {
     // let c_value = unsafe { CString::new(value, false) };
     // let c_substr = unsafe { CString::new(substr, false) };
