@@ -10,17 +10,11 @@ typedef union uwb {
 
 typedef unsigned Digest[4];
 
-unsigned f0( unsigned abcd[] ){
-    return ( abcd[1] & abcd[2]) | (~abcd[1] & abcd[3]);}
-
-unsigned f1( unsigned abcd[] ){
-    return ( abcd[3] & abcd[1]) | (~abcd[3] & abcd[2]);}
-
-unsigned f2( unsigned abcd[] ){
-    return  abcd[1] ^ abcd[2] ^ abcd[3];}
-
-unsigned f3( unsigned abcd[] ){
-    return abcd[2] ^ (abcd[1] |~ abcd[3]);}
+// The below functions are imported from Rust
+unsigned f0(unsigned abcd[]);
+unsigned f1(unsigned abcd[]);
+unsigned f2(unsigned abcd[]);
+unsigned f3(unsigned abcd[]);
 
 typedef unsigned (*DgstFctn)(unsigned a[]);
 

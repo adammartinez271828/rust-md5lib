@@ -9,6 +9,34 @@ pub extern "C" fn test_function() -> i32 {
     0
 }
 
+// For F, G, H, I, below, see : https://en.wikipedia.org/wiki/MD5#Algorithm
+// Note to self: all operators below are bitwise
+// Also, ^ is XOR
+
+/// F
+#[no_mangle]
+pub extern "C" fn f0(abcd: &[u32]) -> u32 {
+    (abcd[1] & abcd[2]) | (!abcd[1] & abcd[3])
+}
+
+/// G
+#[no_mangle]
+pub extern "C" fn f1(abcd: &[u32]) -> u32 {
+    (abcd[3] & abcd[1]) | (!abcd[3] & abcd[2])
+}
+
+/// H
+#[no_mangle]
+pub extern "C" fn f2(abcd: &[u32]) -> u32 {
+    abcd[1] ^ abcd[2] ^ abcd[3]
+}
+
+/// I
+#[no_mangle]
+pub extern "C" fn f3(abcd: &[u32]) -> u32 {
+    abcd[2] ^ (abcd[1] | !abcd[3])
+}
+
 /// Rotate uint v left by amt bits
 /// amt is signed integer so we can rotate right
 #[no_mangle]
