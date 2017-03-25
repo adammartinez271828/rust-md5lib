@@ -9,6 +9,19 @@ pub extern "C" fn test_function() -> i32 {
     0
 }
 
+#[no_mangle]
+pub extern "C" fn calc_ks(k: &mut [u32; 64]) -> &[u32; 64] {
+    let mut s: f64;
+    let pwr: f64 = 2f64.powi(32);
+
+    for i in 0..k.len() {
+        s = ((1 + i) as f64).sin().abs();
+        k[i] = (s * pwr) as u32;
+    }
+
+    k
+}
+
 // For F, G, H, I, below, see : https://en.wikipedia.org/wiki/MD5#Algorithm
 // Note to self: all operators below are bitwise
 // Also, ^ is XOR

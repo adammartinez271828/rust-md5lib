@@ -31,6 +31,8 @@ unsigned *calcKs( unsigned *k)
     return k;
 }
 
+unsigned *calc_ks(unsigned *k);
+
 // Imported from Rust
 unsigned rol(unsigned v, short amt);
 
@@ -63,7 +65,8 @@ unsigned *md5( const char *msg, int mlen)
     int grp, grps, q, p;
     unsigned char *msg2;
 
-    if (k==NULL) k= calcKs(kspace);
+    // if (k==NULL) k =calcKs(kspace);
+    if (k==NULL) k = calc_ks(kspace);
 
     for (q=0; q<4; q++) h[q] = h0[q];   // initialize
 
