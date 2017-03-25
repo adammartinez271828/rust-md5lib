@@ -43,8 +43,7 @@ pub extern "C" fn f3(abcd: &[u32]) -> u32 {
 pub extern "C" fn rol(v: u32, amt: i16) -> u32 {
     if amt >= 0 {
         return v.rotate_left(amt as u32);
-    }
-    else {
+    } else {
         return v.rotate_right(-amt as u32);
     }
 }
