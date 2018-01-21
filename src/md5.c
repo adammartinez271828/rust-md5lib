@@ -3,39 +3,25 @@
 #include <string.h>
 #include <math.h>
 
-typedef union uwb {
-    unsigned w;
-    unsigned char b[4];
-} WBunion;
-
-typedef unsigned Digest[4];
-
 // The below functions are imported from Rust
 unsigned f0(unsigned abcd[]);
 unsigned f1(unsigned abcd[]);
 unsigned f2(unsigned abcd[]);
 unsigned f3(unsigned abcd[]);
 
-typedef unsigned (*DgstFctn)(unsigned a[]);
-
-unsigned *calcKs(unsigned *k)
-{
-    double s, pwr;
-    int i;
-
-    pwr = pow(2, 32);
-    for (i = 0; i < 64; i++)
-    {
-        s = fabs(sin(1 + i));
-        k[i] = (unsigned)(s * pwr);
-    }
-    return k;
-}
-
 unsigned *calc_ks(unsigned *k);
 
-// Imported from Rust
 unsigned rol(unsigned v, short amt);
+
+// C
+typedef unsigned (*DgstFctn)(unsigned a[]);
+
+typedef union uwb {
+    unsigned w;
+    unsigned char b[4];
+} WBunion;
+
+typedef unsigned Digest[4];
 
 unsigned *md5(const char *msg, int mlen)
 {
@@ -66,7 +52,6 @@ unsigned *md5(const char *msg, int mlen)
     int grp, grps, q, p;
     unsigned char *msg2;
 
-    // if (k==NULL) k =calcKs(kspace);
     if (k == NULL)
         k = calc_ks(kspace);
 
@@ -128,8 +113,6 @@ unsigned *md5(const char *msg, int mlen)
     return h;
 }
 
-// int32_t test_function();
-
 int main(int argc, char *argv[])
 {
     int j, k;
@@ -145,8 +128,6 @@ int main(int argc, char *argv[])
             printf("%02x", u.b[k]);
     }
     printf("\n");
-
-    // test_function();
 
     return 0;
 }
